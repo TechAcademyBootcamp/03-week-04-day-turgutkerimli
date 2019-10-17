@@ -1,7 +1,3 @@
-
-// Bubble Sort Interview Questions:
-
-
 // Write a function that sorts an array of numbers in order.
 // You can do this with the Bubble Sort algorithm.
 // If you are unfamiliar with Bubble Sort,
@@ -10,13 +6,10 @@
 
 // Use the array provided below.
 
-// Display the unsorted array in the `#start` div of `index.html`.
-
 // When the user clicks the `button` in index.html,
 // the sorted result should be displayed in the `#result` div.
 
 // DO NOT USE JQUERY TO SELECT ELEMENTS. ONLY USE VANILLA JS.
-
 
 var unsortedArr = [
   1, 326, 251, 24, 284, 364, 287, 74, 89,
@@ -67,3 +60,30 @@ var unsortedArr = [
   292, 332, 209, 244, 196, 179, 472, 279, 40, 486, 270, 185,
   181, 485, 495, 81, 169, 294, 79, 400, 92, 104, 249
 ];
+// Display the unsorted array in the `#start` div of `index.html`.
+document.getElementById("start").innerHTML = unsortedArr
+
+// Bubble Sort Interview Questions:
+
+function bubble_Sort() {
+  var swapp;
+  var n = unsortedArr.length - 1;
+  var x = unsortedArr;
+  do {
+    swapp = false;
+    for (var i = 0; i < n; i++) {
+      if (x[i] > x[i + 1]) {
+        var temp = x[i];
+        x[i] = x[i + 1];
+        x[i + 1] = temp;
+        swapp = true;
+      }
+    }
+    n--;
+  } while (swapp);
+  document.getElementById("result").innerHTML = x;
+}
+
+
+
+

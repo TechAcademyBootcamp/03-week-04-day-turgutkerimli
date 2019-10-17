@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>Favorite Movies</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 
 <body>
@@ -27,22 +28,71 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
     // The below code fills in the first row of the table
+
+
     var movie = "Mr. Nobody";
+
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
+      console.log(response.Title)
 
       // Obtain a reference to the tbody element in the DOM
       // Create and save a reference to new empty table row
+      $("tbody").append("<tr></tr>")
       // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
-      // Append the td elements to the new table row
-      // Append the table row to the tbody element
-    });
+      $("tbody>tr:eq(0)").append("<td></td>")
+      $("tbody>tr:eq(0)").append("<td></td>")
+      $("tbody>tr:eq(0)").append("<td></td>")
 
+      // Append the td elements to the new table row
+      $("tbody>tr:eq(0)>td:eq(0)").append(response.Title)
+      $("tbody>tr:eq(0)>td:eq(1)").append(response.Year)
+      $("tbody>tr:eq(0)>td:eq(2)").append(response.Actors)
+    })
+    // Append the table row to the tbody element
     // Repeat the above logic to add rows for two more movies of your choice
+    var movie = "The Godfather";
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+
+      $("tbody").append("<tr></tr>")
+
+      $("tbody>tr:eq(1)").append("<td></td>")
+      $("tbody>tr:eq(1)").append("<td></td>")
+      $("tbody>tr:eq(1)").append("<td></td>")
+
+      $("tbody>tr:eq(1)>td:eq(0)").append(response.Title)
+      $("tbody>tr:eq(1)>td:eq(1)").append(response.Year)
+      $("tbody>tr:eq(1)>td:eq(2)").append(response.Actors)
+    })
+
+    var movie = "Up";
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+
+      $("tbody").append("<tr></tr>")
+
+      $("tbody>tr:eq(2)").append("<td></td>")
+      $("tbody>tr:eq(2)").append("<td></td>")
+      $("tbody>tr:eq(2)").append("<td></td>")
+
+      $("tbody>tr:eq(2)>td:eq(0)").append(response.Title)
+      $("tbody>tr:eq(2)>td:eq(1)").append(response.Year)
+      $("tbody>tr:eq(2)>td:eq(2)").append(response.Actors)
+    });
+    
 
     // BONUS: Once complete, try to make your code as DRY as possible through the use of functions
   </script>
